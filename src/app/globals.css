@@ -1,0 +1,157 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:is(.dark *));
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-phone)) {
+    max-width: none;
+  }
+  @media (width >= 360px) {
+    max-width: 360px;
+  }
+  @media (width >= 1024px) {
+    max-width: 1024px;
+  }
+}
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-phone: 0px;
+  --breakpoint-desktop: 1024px;
+
+  --font-sans:
+    var(--font-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-orange: #f77c00;
+  --color-orange_light: #fea400;
+  --color-blue: #060082;
+  --color-blue_dark: #030041;
+  --color-blue_light: #5451a1;
+  --color-gray_light: #bfbfbf;
+  --color-gray: #808080;
+  --color-gray_dark: #404040;
+  --color-bg_secondary: #e6e6e6;
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --color-background-image-footer-img: url('/OSW_Surface_Washing_1.webp');
+
+  --shadow-md: 2px 2px 2px rgba(100, 0, 100, 0.55);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+  --animate-rise-up: rise-up 1s ease-out;
+  --animate-slide-down: slide-down 1s ease-in;
+
+  @keyframes accordion-down {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-accordion-content-height);
+    }
+  }
+  @keyframes accordion-up {
+    from {
+      height: var(--radix-accordion-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  @keyframes rise-up {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes slide-down {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+  }
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+.custom-oval {
+  border-radius: 50% / 50%;
+}
+
+.footer-scalap {
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 50%;
+}
+
+.card-service-text {
+  text-shadow: 1px 1px 1px #FFAE00;
+}
+
+.form-input {
+  @apply rounded-[12px] text-blue p-2 text-xl border border-blue_dark shadow-lg
+}
+
+.gradient-text {
+  background: linear-gradient(to bottom, #fea400, #f57305);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
