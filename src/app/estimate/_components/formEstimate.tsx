@@ -3,7 +3,6 @@ import { useEffect, useRef, useState, useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { FormAction } from "../_actions/FormAction"
 import ReCAPTCHA from "react-google-recaptcha"
-import GooglePlacesAutocomplete from "react-google-places-autocomplete"
 import { PageSection } from "@/components/PageSection"
 import { FormCheckboxComponent } from "./FormCheckboxComponent"
 import { ThankYouComponent } from "./ThankYouComponent"
@@ -140,72 +139,7 @@ export function FormEstimate({
                             <input id="custPhone" name="custPhone" placeholder="Phone*" type="tel" className="form-input lg:w-1/5 " required />
                         </div>
 
-                        <div className="flex flex-row">
-                            <label htmlFor="custAddress" className="hidden">Address:</label>
-                            <input id="custAddress" name="custAddress" type="hidden" value={selectedAddress} />
-                            <GooglePlacesAutocomplete
-                                apiKey={process.env.NEXT_PUBLIC_GOOGLE_MAPS_PLATFORM_APIKEY}
-                                autocompletionRequest={{
-                                    types: ['street_address'], // <-- This is the key part!
-                                    componentRestrictions: { country: 'us' },
-                                    // 2. Define the center point for the search
-                                    location: WORTHINGTON_OH_COORDS,
-
-                                    // 3. Define the search radius (in meters)
-                                    radius: SEARCH_RADIUS_METERS,
-
-                                    // 4. IMPORTANT: Enforce the bounds strictly
-                                    // Without this, it only biases results, doesn't restrict them.
-                                    //strictBounds: true,
-                                }}
-                                selectProps={{
-                                    placeholder: 'Property Address*',
-                                    className: "flex w-full rounded-[12px] text-blue text-xl border border-blue_dark shadow-lg",
-                                    onChange: (selectedOption) => {
-                                        if (selectedOption) {
-                                            setSelectedAddress(selectedOption.label);
-                                        }
-                                    },
-                                    styles: {
-                                        container: (provided) => ({
-                                            ...provided,
-                                            width: '100%',
-                                        }),
-                                        control: (provided) => ({
-                                            ...provided,
-                                            width: '100%',
-                                            borderWidth: '0px',
-                                            borderColor: '#00008B', // blue_dark
-                                            borderRadius: '12px',
-                                            fontSize: '1.25rem', // text-xl
-                                            color: 'blue',
-                                        }),
-                                        input: (provided) => ({
-                                            ...provided,
-                                            width: '100%',
-                                        }),
-                                        menu: (provided) => ({
-                                            ...provided,
-                                            borderRadius: '8px',
-                                            marginTop: '4px',
-                                        }),
-                                        option: (provided, state) => ({
-                                            ...provided,
-                                            backgroundColor: state.isSelected ? '#00008B' : state.isFocused ? '#EBF8FF' : 'white',
-                                            color: state.isSelected ? 'white' : '#2D3748',
-                                            '&:active': {
-                                                backgroundColor: '#00008B', // Match selected color on click
-                                                color: 'white',
-                                            }
-                                        }),
-                                    }
-
-                                }}
-                            />
-                        </div>
-
-
-
+ 
 
                         <div className="flex-1 flex flex-col space-y-2 justify-start items-start">
                             <div className="text-blue text-xl font-bold ">

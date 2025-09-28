@@ -8,8 +8,6 @@ import { PageTitleSection } from "@/components/PageSection-Title"
 import { siteConfig } from "@/config"
 import Image from "next/image"
 import { map } from "zod"
-import { useState, useEffect } from "react"
-import GoogelReviews from "@/components/GoogleReview"
 import { ReactCompareSlider, ReactCompareSliderImage } from "react-compare-slider"
 import { ButtonMedia } from "@/components/ButtonMedia"
 import { InstagramIcon } from "lucide-react"
@@ -177,7 +175,7 @@ export default async function HomePage() {
 					subtitle="What people are saying..."
 					className="bg-linear-to-b from-white via-sky-100 to-white"
 				>
-					<GoogelReviews placeId="ChIJQ7ge5FCdNKMRdhLJTP6maks" />
+					<div>Hi</div>
 				</PageSection>
 
 				{/***********************************************************/}
